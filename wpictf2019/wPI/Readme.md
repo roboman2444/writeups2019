@@ -37,11 +37,12 @@ Simplest Idea: Take the table of Pi "cookies", find everywhere they showed up in
 
 The total search space of pi would be less than ((FLAG_LEN/2)+1) * 32700, as the largest 2 byte "offset" could be 32639 (printable ascii, both byte values have to be < 128). We knew the flag len based on the table of pi "cookies". 16 "cookies" = 32 total bytes of flag. 5 of which we already know (WPI{...})
 
+This means we need at most 555900 digits of pi... Not too bad.
 
 ## Generating pi
 Fuck that. Pi is hard and slow to generate. I found a pre-made million digis of pi in hex that encompassed my pi search space. I think i downloaded it from [https://pi2e.ch/blog/2017/03/10/pi-digits-download/](https://pi2e.ch/blog/2017/03/10/pi-digits-download/). Ezpz.
 
-First i went through that list and kept track of every time the "cookies" showed up. I dont want to search for them in Pi a billion times, so caching the results into a "fast" data structure was key.
+First i went through that list and kept track of every time the "cookies" showed up. I dont want to search for them in Pi a billion times, so caching the results into a "fast" data structure was key. For each cookie, i Kept track a table of locations that it showed up in pi, sorted.
 
 All connections in the search have to go forward (Positive offset), so we can ignore going "backwards" in Pi.
 
@@ -49,11 +50,11 @@ While doing the DFS, we can ignore connections that would result in unprintable 
 
 Finally, we had to deal with the "unknown" start offset (md5). We did this by subtracting "WP" from all the instances of the start cookie and using that as our actual starting place in our DFS. We could also early out any 2nd cookies that didnt result in an offset of "I{", but our solver was fast enough without that.
 
-After some more optimization, we got the solver to run faster than the actual challenge itself.
+After some more optimization, we got the solver to run faster than the actual challenge itself. Can probably speed it up even still by doing some stuff like binary searching, but... its already fast.
 
-'''
+```
 $ time ./a.out 
-e89, 140
+e89, 140			// cookie, and number of times it showed up in our hex digit file
 b87, 145
 8ad, 141
 7c7, 133
@@ -75,6 +76,6 @@ WPI{Sw33TeR_tH@n_aH_cH3rRi3_P1e}
 real	0m4.932s
 user	0m4.925s
 sys	0m0.004s
-'''
+```
 
-[See solution.](solve.c)
+[See solution script](solve.c)
