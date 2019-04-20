@@ -50,6 +50,8 @@ While doing the DFS, we can ignore connections that would result in unprintable 
 
 Finally, we had to deal with the "unknown" start offset (md5). We did this by subtracting "WP" from all the instances of the start cookie and using that as our actual starting place in our DFS. We could also early out any 2nd cookies that didnt result in an offset of "I{", but our solver was fast enough without that.
 
+Finally, we could just use each "end" of the DFS as a string to throw at the final sha3 check. If the check passed, then we would have the flag. There were thousands of strings that passed the Pi part, so the sha3 was very necisary.
+
 After some more optimization, we got the solver to run faster than the actual challenge itself. Can probably speed it up even still by doing some stuff like binary searching, but... its already fast.
 
 ```
