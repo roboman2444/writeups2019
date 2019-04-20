@@ -56,7 +56,7 @@ After some more optimization, we got the solver to run faster than the actual ch
 
 ```
 $ time ./a.out 
-e89, 140			// cookie, and number of times it showed up in our hex digit file
+e89, 140			// cookie, and number of times it showed up in our Pi we cared about
 b87, 145
 8ad, 141
 7c7, 133
