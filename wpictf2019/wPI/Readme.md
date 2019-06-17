@@ -2,7 +2,7 @@
 
 I am one of the organizers of WPICTF, so this writeup is going to be a little "biased" per say. Remy wrote the challenge, and asked me to create a solution for it.
 
-If you want a writeup from the point of view of a competitor (no source access, no talking to the creator, etc), then please look at [Armia Prezesa's writeup](https://wiki.armiaprezesa.pl/books/wpictf2019/page/wpi)
+If you want a writeup from the point of view of a competitor (no source access, no insider knowledge, etc), then please look at [Armia Prezesa's writeup](https://wiki.armiaprezesa.pl/books/wpictf2019/page/wpi)
 
 ## Challenge description:
 
